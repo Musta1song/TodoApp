@@ -1,0 +1,72 @@
+<body>
+  <div class="maindiv">
+    <div class="mat-card-div">
+
+      <label for="mat-card">
+        <h1>Todos</h1>
+      </label>
+      <mat-card>
+        <mat-card-header class="mat-card-header1"> offene Todos</mat-card-header>
+        <div *ngFor="let item of todolist">
+          <div *ngIf="item.isDone!= true;" class="card-content-container">
+            <mat-card-content>
+              <div class="todoTimeAndtodoItem"> <input class="CheckBox" type="checkbox" value="{{item.id}}"
+                  (change)="CheckBoxEvent($event)">
+
+                {{item.time}} | <div class="todo"> {{ item.todo}} </div>
+              </div>
+            </mat-card-content>
+
+          </div>
+        </div>
+
+      </mat-card>
+    </div>
+    <div class="icobt-container">
+
+      <button mat-mini-fab color="green" id="matbt" class="MatIconDoneBt" title="als erlerdigt markieren"
+        (click)="markTodoAsDone()">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button mat-mini-fab color="green" id="matbt" class="MatIconDeleteBt" title="Todo löschen" (click)="deleteTodo()">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+    </div>
+    <div class="mat-card-div">
+      <label for="mat-card">
+        <h1>Todos</h1>
+      </label>
+      <mat-card>
+        <mat-card-header class="mat-card-header2">Erlerdigte Todos</mat-card-header>
+        <div *ngFor="let item of todolist">
+          <mat-card-content *ngIf="item.isDone===true">
+            <div class="todoTimeAndtodoItem"> <input class="CheckBox" type="checkbox" value="{{item.id}}"
+                (change)="CheckBoxEvent($event)">
+
+              {{item.time}} | <div class="todo"> {{ item.todo}} </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </div>
+
+
+    <div class="CreateNewTodo-container">
+      <button (click)="MakeTodoFormVisible()" class="addTodoBt" title="Todo erstellen"> <mat-icon>add</mat-icon></button><br><br><br>
+      <div class="NewTodoForm" id="NewTodoForm"> 
+        <div class="CreateNewTodoInputs">
+          <label for=""> Uhrzeit: </label>
+          <input type="time" id="time" class="CreateNewTodoInput" [(ngModel)]="todos.time">
+          <p id="timeerr">&nbsp;</p>
+          <label for=""> todo: </label>
+          <input id="CreateNewTodo" class="CreateNewTodoInput" type="text" [(ngModel)]="todos.todo">
+          <p id="todoerr">&nbsp;</p>
+        </div>
+        <button (click)="CreateNewTodo()" class="CreateTodoBt"> Todo erstellen</button><br><br><br>
+      </div>
+
+    </div>
+  </div>
+
+</body>
