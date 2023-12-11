@@ -1,21 +1,38 @@
 mat-card {
-    width: 600px;
+    width: 550px;
     height: 60vh;
     margin-top: 1%;
-
     &:first-child {
         margin-left: 10%;
     }
-
     margin-left: 0%;
     border-top-left-radius: 10cm;
 }
 
+mat-card-header {
+    border: solid 1px black;
+    border-top-left-radius: 10cm;
+    border-top-right-radius: 10cm;
+}
 
-mat-icon{
+mat-card-content {
+    border: solid 1px black;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    display: flow-root;
+}
+
+mat-card-footer {
+    background-color: rgba(0, 128, 0, 0.486);
+}
+
+
+mat-icon {
     margin-top: 5px;
     height: 30px;
 }
+
 .MatIconDoneBt {
     margin-left: 10%;
     margin-top: 10%;
@@ -36,12 +53,6 @@ mat-icon{
     border-radius: 5px;
 }
 
-mat-card-header {
-    border: solid 1px black;
-
-    border-top-left-radius: 10cm;
-    border-top-right-radius: 10cm;
-}
 
 .mat-card-header1 {
     background-color: red;
@@ -63,11 +74,7 @@ p {
     display: flex;
 }
 
-mat-card-content {
-    border: solid 1px black;
-    display: flow-root;
-}
-.todoTimeAndtodoItem{
+.todoTimeAndtodoItem {
     display: flex;
 }
 
@@ -80,11 +87,10 @@ mat-card-content {
 }
 
 .CreateTodoBt {
-    margin-top: 8%;
-    height: 40px;
-    width: 120px;
-    min-width: 120px;
-    background-color: #ff4444a9;
+    margin-top: 2%;
+    height: 46px;
+    width: 70px;
+    background-color: #f3f2f2a9;
 
 }
 
@@ -97,10 +103,14 @@ mat-card-content {
 
 .CreateNewTodoInputs {
     margin-top: 40%;
-    background-color: rgba(115, 194, 226, 0.527);
 
 }
-.NewTodoForm{
+
+.NewTodoForm {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(201, 159, 240);
     visibility: hidden;
 }
 
@@ -110,19 +120,25 @@ mat-card-content {
     display: block;
 }
 
-.todo{
+.todo {
     font-weight: bold;
     margin-left: 5px;
 }
-.mat-card-div{
+
+.mat-card-div {
     margin-left: 2%;
     text-align: center;
 }
-.addTodoBt{
-    &:hover{
+
+.addTodoBt {
+    &:hover {
         background-color: rgb(151, 113, 113);
-        
+
     }
+
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 2%;
     height: 60px;
     width: 60px;
     text-align: center;
@@ -133,13 +149,10 @@ mat-card-content {
     background-color: rgb(161, 103, 103);
 }
 
-.CheckBox{
-    text-align: right;
-}
+
 
 
 .TodoUpdateButtons {
-    margin-left: 18%;
     height: 50px;
     width: 100px;
     min-width: 100px;

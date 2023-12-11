@@ -7,19 +7,20 @@
       </label>
       <mat-card>
         <mat-card-header class="mat-card-header1"> offene Todos</mat-card-header>
-        <div *ngFor="let item of todolist">
-          <div *ngIf="item.isDone!= true;" class="card-content-container">
-            <mat-card-content>
-              <div class="todoTimeAndtodoItem"> <input class="CheckBox" type="checkbox" value="{{item.id}}"
-                  (change)="CheckBoxEvent($event)">
+        <div style="border: solid 1px;">
 
-                {{item.time}} | <div class="todo"> {{ item.todo}} </div>
-              </div>
-            </mat-card-content>
+          <div *ngFor="let item of todolist">
+            <div *ngIf="item.isDone!= true;" class="card-content-container">
+              <mat-card-content>
+                <div class="todoTimeAndtodoItem"> <input class="Radio" type="radio" value="{{item.id}}"
+                    (change)="RadioEvent($event)">
 
+                  {{item.time}} | <div class="todo"> {{ item.todo}} </div>
+                </div>
+              </mat-card-content>
+            </div>
           </div>
         </div>
-
       </mat-card>
     </div>
     <div class="icobt-container">
@@ -39,22 +40,26 @@
       </label>
       <mat-card>
         <mat-card-header class="mat-card-header2">Erlerdigte Todos</mat-card-header>
-        <div *ngFor="let item of todolist">
-          <mat-card-content *ngIf="item.isDone===true">
-            <div class="todoTimeAndtodoItem"> <input class="CheckBox" type="checkbox" value="{{item.id}}"
-                (change)="CheckBoxEvent($event)">
+        <div style="border: solid 1px;">
+          <div *ngFor="let item of todolist">
+            <mat-card-content *ngIf="item.isDone===true">
+              <div class="todoTimeAndtodoItem"> <input class="Radio" type="radio" value="{{item.id}}"
+                  (change)="RadioEvent($event)">
 
-              {{item.time}} | <div class="todo"> {{ item.todo}} </div>
-            </div>
-          </mat-card-content>
+                {{item.time}} | <div class="todo"> {{ item.todo}} </div>
+              </div>
+            </mat-card-content>
+          </div>
         </div>
+
       </mat-card>
     </div>
 
 
     <div class="CreateNewTodo-container">
-      <button (click)="MakeTodoFormVisible()" class="addTodoBt" title="Todo erstellen"> <mat-icon>add</mat-icon></button><br><br><br>
-      <div class="NewTodoForm" id="NewTodoForm"> 
+      <button (click)="MakeTodoFormVisible()" class="addTodoBt" title="Todo erstellen">
+        <mat-icon>add</mat-icon></button><br>
+      <div class="NewTodoForm" id="NewTodoForm">
         <div class="CreateNewTodoInputs">
           <label for=""> Uhrzeit: </label>
           <input type="time" id="time" class="CreateNewTodoInput" [(ngModel)]="todos.time">
@@ -63,7 +68,7 @@
           <input id="CreateNewTodo" class="CreateNewTodoInput" type="text" [(ngModel)]="todos.todo">
           <p id="todoerr">&nbsp;</p>
         </div>
-        <button (click)="CreateNewTodo()" class="CreateTodoBt"> Todo erstellen</button><br><br><br>
+        <button (click)="CreateNewTodo()" class="CreateTodoBt"> Todo erstellen</button><br>
       </div>
 
     </div>
