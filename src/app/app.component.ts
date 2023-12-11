@@ -11,7 +11,7 @@ import { GetTodoListService } from './get-todo-list.service';
 import { PostService } from './post.service';
 import { FormsModule } from '@angular/forms';
 import { MarkTodoAsDoneService } from './mark-todo-as-done.service';
-import { TodoListPage2 } from './todo-list-page2';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     public postService: PostService,
     public isDoneService: MarkTodoAsDoneService) { }
   todolist!: TodoList[]
-  todolist2!: TodoListPage2[]
+
   todos: TodoList = new TodoList()
   id!: number
 
