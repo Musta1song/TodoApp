@@ -1,5 +1,5 @@
 <body>
-  <div class="maindiv">
+  <div class="maindiv" cdkDropListGroup>
     <div class="mat-card-div">
 
       <label for="mat-card">
@@ -7,14 +7,15 @@
       </label>
       <mat-card>
         <mat-card-header class="mat-card-header1"> offene Todos</mat-card-header>
-        <div style="border: solid 1px;">
+        <div style="border: solid 1px;" cdkDropList
+        [cdkDropListData]="todo"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
 
-          <div *ngFor="let item of todolist">
-            <div *ngIf="item.isDone!= true;" class="card-content-container">
+          <div *ngFor="let item of todo" cdkDrag>
+            <div  class="card-content-container">
               <mat-card-content>
-                <div class="todoTimeAndtodoItem"> <input class="Radio" type="radio" value="{{item.id}}"
-                    (change)="RadioEvent($event)">
-
+                <div class="todoTimeAndtodoItem"> 
                   {{item.time}} | <div class="todo"> {{ item.todo}} </div>
                 </div>
               </mat-card-content>
@@ -25,36 +26,38 @@
     </div>
     <div class="icobt-container">
 
-      <button mat-mini-fab color="green" id="matbt" class="MatIconDoneBt" title="als erlerdigt markieren"
-        (click)="markTodoAsDone()">
-        <mat-icon>done</mat-icon>
-      </button>
-      <button mat-mini-fab color="green" id="matbt" class="MatIconDeleteBt" title="Todo löschen" (click)="deleteTodo()">
-        <mat-icon>delete</mat-icon>
+  
+      <button (click)="deleteTodo()" class="deletebt" title="Erledigte todos löschen">
+        <mat-icon class="MatIconDelete">delete</mat-icon>
       </button>
 
-    </div>
-    <div class="mat-card-div">
+        <button mat-mini-fab color="green" id="matbt" class="MatIconDoneBt" title="Änderungen bestätigen"
+          (click)="markTodoAsDone()">
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
+
+      
+    <div class="mat-card-div" style="margin-left: 0%;">
       <label for="mat-card">
-        <h1>Todos</h1>
+        <h1> <br></h1>
       </label>
       <mat-card>
         <mat-card-header class="mat-card-header2">Erlerdigte Todos</mat-card-header>
-        <div style="border: solid 1px;">
-          <div *ngFor="let item of todolist">
-            <mat-card-content *ngIf="item.isDone===true">
-              <div class="todoTimeAndtodoItem"> <input class="Radio" type="radio" value="{{item.id}}"
-                  (change)="RadioEvent($event)">
-
+        <div style="border: solid 1px;" cdkDropList
+        [cdkDropListData]="done"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of done" cdkDrag>
+            <mat-card-content>
+              <div class="todoTimeAndtodoItem"> 
                 {{item.time}} | <div class="todo"> {{ item.todo}} </div>
               </div>
             </mat-card-content>
           </div>
         </div>
-
       </mat-card>
     </div>
-
 
     <div class="CreateNewTodo-container">
       <button (click)="MakeTodoFormVisible()" class="addTodoBt" title="Todo erstellen">
@@ -64,7 +67,7 @@
           <label for=""> Uhrzeit: </label>
           <input type="time" id="time" class="CreateNewTodoInput" [(ngModel)]="todos.time">
           <p id="timeerr">&nbsp;</p>
-          <label for=""> todo: </label>
+          <label for=""> Todo: </label>
           <input id="CreateNewTodo" class="CreateNewTodoInput" type="text" [(ngModel)]="todos.todo">
           <p id="todoerr">&nbsp;</p>
         </div>
@@ -73,5 +76,5 @@
 
     </div>
   </div>
-
+  
 </body>

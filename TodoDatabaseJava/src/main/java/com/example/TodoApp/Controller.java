@@ -53,5 +53,15 @@ public class Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PatchMapping("/todos/{id}/false")
+    public ResponseEntity<TodoList> undoTodo(@PathVariable Long id) {
+        try {
+            TodoList todo = todoRepository.findById(id).get();
+            todo.setIsDone(false);
+            return new ResponseEntity<TodoList>(todoRepository.save(todo), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
 

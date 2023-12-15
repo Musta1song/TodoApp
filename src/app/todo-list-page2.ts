@@ -1,8 +1,9 @@
 import { Time } from "@angular/common"
 
-export class TodoList {
+export class TodoListPage2 {
+
     id?: number
-    time?: Date
+    time?: Time
     todo?: string
     isDone?: boolean
 }

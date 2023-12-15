@@ -11,16 +11,20 @@ import { GetTodoListService } from './get-todo-list.service';
 import { PostService } from './post.service';
 import { FormsModule } from '@angular/forms';
 import { MarkTodoAsDoneService } from './mark-todo-as-done.service';
+import { TodoListPage2 } from './todo-list-page2';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatCardModule, FormsModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, RouterOutlet, MatCardModule, FormsModule, MatButtonModule, MatIconModule, DragDropModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'TodoApp';
+  done!: TodoListPage2[]
+  todo!: TodoListPage2[]
 
   constructor(
     public deleteService: DeleteService,
@@ -28,18 +32,42 @@ export class AppComponent implements OnInit {
     public postService: PostService,
     public isDoneService: MarkTodoAsDoneService) { }
   todolist!: TodoList[]
-
   todos: TodoList = new TodoList()
   id!: number
 
 
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      document.getElementById("matbt")!.style.backgroundColor = "green"
+
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+      document.getElementById("matbt")!.style.backgroundColor = "green"
+
+
+    }
+  }
 
   deleteTodo() {
-    this.deleteService.deleteTodo(this.id).subscribe();
+    for (let i of this.done) {
+      this.deleteService.deleteTodo(i.id).subscribe();
+    }
     window.location.reload()
   }
   markTodoAsDone() {
-    this.isDoneService.updateTodo(this.id).subscribe();
+    for (let i of this.done) {
+      if (i.isDone != true)
+        this.isDoneService.updateTodo(i.id).subscribe();
+    }
+    for (let i of this.todo)
+      if (i.isDone === true) {
+        this.isDoneService.undoTodo(i.id).subscribe();
+      }
+
     window.location.reload()
   }
   ngOnInit(): void {
@@ -47,6 +75,7 @@ export class AppComponent implements OnInit {
       console.log(data);
       this.todolist = data;
       this.sort(this.todolist)
+      this.sortByIsDone(this.todolist)
     });
   }
   getTimeArr(arr: any[]) {
@@ -80,6 +109,22 @@ export class AppComponent implements OnInit {
     }
     return arr;
   }
+  sortByIsDone(arr: any[]) {
+    let done: any = []
+    let todo: any = []
+
+    for (let i of arr) {
+      if (i.isDone == true) {
+        done.push(i)
+      }
+      else {
+        todo.push(i)
+      }
+    }
+    console.log(done)
+    this.done = done
+    this.todo = todo
+  }
 
 
 
@@ -91,10 +136,7 @@ export class AppComponent implements OnInit {
 
   // Example usage:
   CreateNewTodo() {
-    if (this.todos.time == null) {
-      document.getElementById("timeerr")!.innerHTML = "Geben Sie eine Uhrzeit ein!"
-    }
-    else if (this.todos.todo == null) {
+    if (this.todos.todo == null) {
       document.getElementById("todoerr")!.innerHTML = "Geben Sie eine Aufgabe ein!"
     }
 

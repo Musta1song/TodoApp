@@ -16,4 +16,8 @@ export class MarkTodoAsDoneService {
     return this.http.patch<any>(
       `${this.baseUrl}/${id}/true`, id)
   }
+  undoTodo(id?: any): Observable<Object> {
+    return this.http.patch<any>(
+      `${this.baseUrl}/${id}/false`, id)
+  }
 }
