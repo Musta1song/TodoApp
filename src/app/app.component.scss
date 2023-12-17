@@ -20,7 +20,6 @@ mat-card-header {
 .deletebt {
     height: 100px;
     width: 100px;
-    margin-top: 100px;
     background-color: rgba(255, 255, 255, 0);
     border: rgba(255, 255, 255, 0);
 }
@@ -32,36 +31,18 @@ mat-card-content {
     text-align: center;
     display: flow-root;
 }
-
-
-
-
 mat-icon {
-    margin-top: 5px;
     height: 30px;
-    transform: scale(1.3);
+    margin-top: 10%;
 }
 
 .MatIconDoneBt {
-    margin-left: 23%;
-    margin-top: 10%;
-
-    background-color: gray;
+    margin-top: 15%;
+    background-color: rgba(128, 128, 128, 0.568);
     color: white;
-    border-radius: 5px;
-    transform: scale(1.5);
-
-    &:hover {
-        transform: scale(4);
-
-
-    }
-
+    height: 40px;
+    width: 40px;
 }
-
-
-
-
 .mat-card-header1 {
     background-color: red;
 }
@@ -86,19 +67,17 @@ p {
     display: flex;
 }
 
-
-
 .icobt-container {
-    display: block;
-    margin-top: 8%;
-    margin-left: 2%;
+    display: flex;
+    margin-left: 1%;
+    margin-top: 100px;
 }
 
 .CreateTodoBt {
     margin-top: 2%;
     height: 46px;
     width: 70px;
-    background-color: #f3f2f2a9;
+    background-color: #ffb3fba9;
 
 }
 
@@ -118,7 +97,7 @@ p {
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: rgb(201, 159, 240);
+    background-color: rgb(240, 159, 204);
     visibility: hidden;
 }
 
@@ -134,36 +113,25 @@ p {
 }
 
 .MatIconDelete {
-    &:hover {
-        transform: scale(8);
-        transition-duration: 0.5s;
-
-
-    }
-
-    transform: scale(4);
-
+    transform: scale(2);
     color: red;
-
 }
 
 
 
 .addTodoBt {
     &:hover {
-        background-color: rgb(151, 113, 113);
+        background-color: rgb(189, 52, 109);
 
     }
 
-    text-align: left;
     margin-left: 10%;
     margin-top: 2%;
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    font-size: 40px;
-    border: solid 1px black;
+    height: 50px;
+    width: 50px;
+    font-size: 35px;
+    border: solid 2px rgb(122, 120, 120);
     border-radius: 50%;
-    color: black;
-    background-color: rgb(161, 103, 103);
+    color: rgb(255, 255, 255);
+    background-color: rgb(231, 78, 142);
 }

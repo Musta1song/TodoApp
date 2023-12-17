@@ -24,25 +24,11 @@
         </div>
       </mat-card>
     </div>
-    <div class="icobt-container">
-
-  
-      <button (click)="deleteTodo()" class="deletebt" title="Erledigte todos löschen">
-        <mat-icon class="MatIconDelete">delete</mat-icon>
-      </button>
-
-        <button mat-mini-fab color="green" id="matbt" class="MatIconDoneBt" title="Änderungen bestätigen"
-          (click)="markTodoAsDone()">
-          <mat-icon>done</mat-icon>
-        </button>
-      </div>
-
-      
     <div class="mat-card-div" style="margin-left: 0%;">
       <label for="mat-card">
         <h1> <br></h1>
       </label>
-      <mat-card>
+      <mat-card style="margin-left: 2%;">
         <mat-card-header class="mat-card-header2">Erlerdigte Todos</mat-card-header>
         <div style="border: solid 1px;" cdkDropList
         [cdkDropListData]="done"
@@ -58,6 +44,18 @@
         </div>
       </mat-card>
     </div>
+    <div class="icobt-container">
+
+  
+      <button (click)="deleteTodo()" class="deletebt" title="Erledigte todos löschen">
+        <mat-icon class="MatIconDelete">delete</mat-icon>
+      </button>
+
+        <button mat-mini-fab color="green" id="matbt" class="MatIconDoneBt" title="Änderungen bestätigen"
+          (click)="markTodoAsDone()">
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
 
     <div class="CreateNewTodo-container">
       <button (click)="MakeTodoFormVisible()" class="addTodoBt" title="Todo erstellen">

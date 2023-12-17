@@ -37,11 +37,8 @@ export class AppComponent implements OnInit {
 
 
   drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      document.getElementById("matbt")!.style.backgroundColor = "green"
-
-    } else {
+    if (event.previousContainer !== event.container) {
+    
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
@@ -138,6 +135,10 @@ export class AppComponent implements OnInit {
   CreateNewTodo() {
     if (this.todos.todo == null) {
       document.getElementById("todoerr")!.innerHTML = "Geben Sie eine Aufgabe ein!"
+    }
+    else if(this.todos.time == null){
+      document.getElementById("todoerr")!.innerHTML = "Geben Sie eine Uhrzeit ein!"
+
     }
 
     else {
